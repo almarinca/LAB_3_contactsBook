@@ -7,4 +7,8 @@ public class ContactsBook {
         
     }
     
+    public static void printAllContacts () {
+        
+    }
+    
 }

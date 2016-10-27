@@ -146,8 +146,7 @@ public class ContactsBook {
         try {
             listaContactos.remove(contact - 1);
             printBorrado();
-        } 
-        catch(IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             printError();
         }
     }
@@ -156,8 +155,11 @@ public class ContactsBook {
         imprimirListaContactos(listaContactos);
         int contact = leerInt();
         if (contact > 0 && contact <= listaContactos.size()) {
-            listaContactos.set(contact - 1, addContact());
-            printActualizado();
+            Contact cont = addContact();
+            if (cont != null) {
+                listaContactos.set(contact - 1, cont);
+                printActualizado();
+            }
         } else if (contact == 0) {
 
         } else {
@@ -176,9 +178,9 @@ public class ContactsBook {
         imprimirListaContactos(listaContactos);
 
         int opcion = leerInt();
-        
+
         try {
-        printContact(listaContactos.get(opcion - 1));  
+            printContact(listaContactos.get(opcion - 1));
         } catch (IndexOutOfBoundsException e) {
             printError();
         }

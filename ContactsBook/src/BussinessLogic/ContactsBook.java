@@ -26,13 +26,16 @@ public class ContactsBook {
                     }
                     break;
                 case 2:
+                    removeContact ();
                     break;
                 case 3:
+                    updateContact ();
                     break;
                 case 4:
                     printAllContacts();
                     break;
                 case 5:
+                    printContactKeys ();
                     break;
                 case 6:
                     salir = true;

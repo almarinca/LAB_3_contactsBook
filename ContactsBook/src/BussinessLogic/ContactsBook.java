@@ -30,11 +30,13 @@ public class ContactsBook {
                     removeContact();
                     break;
                 case 3:
+                    updateContact ();
                     break;
                 case 4:
                     printAllContacts();
                     break;
                 case 5:
+                    printContactKeys ();
                     break;
                 case 6:
                     salir = true;
@@ -158,11 +160,15 @@ public class ContactsBook {
         for (Contact contacto : listaContactos) {
             printContact(contacto);
         }
-
     }
-
-    public static void printContactKeys() {
-
+ 
+    public static void printContactKeys () {
+        
+        imprimirListaContactos (listaContactos);
+        
+        int opcion = leerInt();
+        
+        printContact(listaContactos.get(opcion - 1));  
     }
 
 }

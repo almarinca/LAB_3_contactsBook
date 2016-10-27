@@ -8,10 +8,10 @@ public class Contact {
     private String apellido;
     private ArrayList<String> correoElectronico;
     private int telefonoFijo;
-    private int telefonoMovil;
+    private long telefonoMovil;
     private String direccion;
 
-    public Contact(String nombre, String apellido, ArrayList<String> correoElectronico, int telefonoFijo, int telefonoMovil, String direccion) {
+    public Contact(String nombre, String apellido, ArrayList<String> correoElectronico, int telefonoFijo, long telefonoMovil, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correoElectronico = correoElectronico;
@@ -62,7 +62,7 @@ public class Contact {
         this.telefonoFijo = telefonoFijo;
     }
 
-    public int getTelefonoMovil() {
+    public long getTelefonoMovil() {
         return telefonoMovil;
     }
 

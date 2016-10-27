@@ -25,11 +25,21 @@ public class ContactsBook {
                         printAgregado();
                     }
                     break;
+                case 4:
+                    printAllContacts();
+                    break;
+                case 6:
+                    salir = true;
+                    break;
             }
         }
     }
 
     public static void printAllContacts() {
+
+        for (Contact contacto : listaContactos) {
+            System.out.println(contacto);
+        }
 
     }
 

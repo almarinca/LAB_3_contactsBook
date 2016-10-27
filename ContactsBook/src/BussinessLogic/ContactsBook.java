@@ -41,16 +41,8 @@ public class ContactsBook {
                     printError();
             }
         }
-    }
-
-    public static void printAllContacts() {
-        for (Contact contacto : listaContactos) {
-            printContact(contacto);
-        }
-
-        
-
-    }
+    }   
+    
 
     public static Contact addContact() {
         boolean salir = false;
@@ -143,6 +135,25 @@ public class ContactsBook {
         } else {
             return null;
         }
+    }
+    
+    public static void removeContact () {
+
+    }
+    
+    public static void updateContact () {
+
+    }
+    
+    public static void printAllContacts() {
+        for (Contact contacto : listaContactos) {
+            printContact(contacto);
+        }
+        
+    }   
+    
+    public static void printContactKeys () {
+
     }
 
 }

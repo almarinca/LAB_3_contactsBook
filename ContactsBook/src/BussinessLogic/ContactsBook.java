@@ -30,13 +30,13 @@ public class ContactsBook {
                     removeContact();
                     break;
                 case 3:
-                    updateContact ();
+                    updateContact();
                     break;
                 case 4:
                     printAllContacts();
                     break;
                 case 5:
-                    printContactKeys ();
+                    printContactKeys();
                     break;
                 case 6:
                     salir = true;
@@ -146,14 +146,24 @@ public class ContactsBook {
         try {
             listaContactos.remove(contact - 1);
             printBorrado();
-        }
-        catch(Exception e){
-            printError();
+        } catch (Exception e) {
+            if (contact != 0) {
+                printError();
+            }
         }
     }
 
     public static void updateContact() {
+        imprimirListaContactos(listaContactos);
+        int contact = leerInt();
+        if (contact > 0 && contact <= listaContactos.size()) {
+            listaContactos.set(contact - 1, addContact());
+            printActualizado();
+        } else if (contact == 0) {
 
+        } else {
+            printError();
+        }
     }
 
     public static void printAllContacts() {
@@ -161,14 +171,20 @@ public class ContactsBook {
             printContact(contacto);
         }
     }
- 
-    public static void printContactKeys () {
-        
-        imprimirListaContactos (listaContactos);
-        
+
+    public static void printContactKeys() {
+
+        imprimirListaContactos(listaContactos);
+
         int opcion = leerInt();
-        
-        printContact(listaContactos.get(opcion - 1));  
+
+        try {
+            printContact(listaContactos.get(opcion - 1));
+        } catch (Exception e) {
+            if (opcion != 0) {
+                printError();
+            }
+        }
     }
 
 }

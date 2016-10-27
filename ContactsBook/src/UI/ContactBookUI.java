@@ -93,15 +93,18 @@ public class ContactBookUI {
 
     public static void imprimirListaContactos(ArrayList<Contact> listaContactos) {
         System.out.println("\n Por favor seleccione uno de los contactos para realizar la acción. \n");
+        int i=1;
         for (Contact contacto : listaContactos) {
-            int i=1;
-            System.out.println(i++ +")" + contacto.getNombre());      
-            
+            System.out.println(i++ +")" + contacto.getNombre()); 
         }
         System.out.println("\n 0) salir. \n");
     }
     
     public static void printBorrado(){
         System.out.println("Contacto eliminado correctamente\n");
+    }
+    
+    public static void printActualizado(){
+        System.out.println("El contacto fue actualizado correctamente\n");
     }
 }

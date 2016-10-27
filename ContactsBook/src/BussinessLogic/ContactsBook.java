@@ -182,7 +182,9 @@ public class ContactsBook {
         try {
             printContact(listaContactos.get(opcion - 1));
         } catch (IndexOutOfBoundsException e) {
-            printError();
+            if (opcion != 0) {
+                printError();
+            }
         }
     }
 

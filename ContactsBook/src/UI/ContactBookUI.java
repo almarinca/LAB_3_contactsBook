@@ -19,8 +19,8 @@ public class ContactBookUI {
 
     public static void printMenu() {
         System.out.println("Seleccione una de las siguientes opciones:\n1) Agregar contacto\n"
-                + "2) Eliminar contacto?\n3) Actualizar contacto\n4) Mostrar todos los contactos\n"
-                + "5) Mostrar solo un contacto\n6) Salir");
+                + "2) Eliminar contacto\n3) Actualizar contacto\n4) Mostrar todos los contactos\n"
+                + "5) Mostrar solo un contacto\n6) Salir\n");
     }
 
     public static int leerInt() {
@@ -56,35 +56,39 @@ public class ContactBookUI {
     }
 
     public static void printError() {
-        System.out.println("Valor no válido, volviendo al menú");
+        System.out.println("Valor no válido, volviendo al menú\n");
     }
 
     public static void printValorCorrecto() {
-        System.out.println("Valor ingresado correctamente");
+        System.out.println("Valor ingresado correctamente\n");
     }
 
+    public static void printAgregado(){
+        System.out.println("Contacto agregado correctamente\n");
+    }
+    
     public static void printNombre() {
-        System.out.println("Por favor ingrese el nombre del nuevo contacto(no debe tener más de 10 caracteres)");
+        System.out.println("Por favor ingrese el nombre del nuevo contacto(no debe tener más de 10 caracteres)\n");
     }
 
     public static void printApellido() {
-        System.out.println("Por favor ingrese el apellido del nuevo contacto(no debe tener más de 10 caracteres)");
+        System.out.println("Por favor ingrese el apellido del nuevo contacto(no debe tener más de 10 caracteres)\n");
     }
 
     public static void printCorreo() {
-        System.out.println("Por favor ingrese el correo electrónico del nuevo contacto(debe tener un '@' y un '.')");
+        System.out.println("Por favor ingrese el correo electrónico del nuevo contacto(debe tener un '@' y un '.')\n");
     }
 
     public static void printFijo() {
-        System.out.println("Ingrese el número de teléfono fijo de su nuevo contacto");
+        System.out.println("Ingrese el número de teléfono fijo de su nuevo contacto\n");
     }
 
     public static void printMovil() {
-        System.out.println("Ingrese el número de teléfono móvil de su nuevo contacto");
+        System.out.println("Ingrese el número de teléfono móvil de su nuevo contacto\n");
     }
 
     public static void printDireccion() {
-        System.out.println("Ingrese la dirección de la residencia del nuevo contacto (no debe tener menos de 10 caracteres o más de 30)");
+        System.out.println("Ingrese la dirección de la residencia del nuevo contacto (no debe tener menos de 10 caracteres o más de 30)\n");
     }
 
     public static void menuPrincipal() {

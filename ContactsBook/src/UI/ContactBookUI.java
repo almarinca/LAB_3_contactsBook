@@ -1,6 +1,5 @@
 package UI;
 
-import BussinessLogic.ContactsBook;
 import Data.Contact;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -92,16 +91,6 @@ public class ContactBookUI {
         System.out.println("Ingrese la dirección de la residencia del nuevo contacto (no debe tener menos de 10 caracteres o más de 30)\n");
     }
 
-    public static void menuPrincipal() {
-        System.out.println("\n Por favor seleccione una opción."
-                + "1) Agregar contacto" + "\n"
-                + "2) Eliminar contacto" + "\n"
-                + "3) Actualizar contacto" + "\n"
-                + "4) Mostrar todos los contactos" + "\n"
-                + "5) Mostrar un contacto" + "\n"
-                + "6) Salir" + "\n");
-    }
-
     public static void imprimirListaContactos(ArrayList<Contact> listaContactos) {
         System.out.println("\n Por favor seleccione uno de los contactos para realizar la acción. \n");
         for (Contact contacto : listaContactos) {
@@ -112,10 +101,7 @@ public class ContactBookUI {
         System.out.println("\n 0) salir. \n");
     }
     
-    
-
-    public static void PrintError() {
-        System.out.println("por favor ingrese una opcion valida");
+    public static void printBorrado(){
+        System.out.println("Contacto eliminado correctamente\n");
     }
-
 }

@@ -30,11 +30,6 @@ public class Contact {
                 + "direccion:" + direccion + "\n";
     }
     
-    
-    
-    
-    
-
     public String getNombre() {
         return nombre;
     }

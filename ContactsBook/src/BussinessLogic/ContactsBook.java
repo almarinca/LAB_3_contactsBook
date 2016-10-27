@@ -114,7 +114,8 @@ public class ContactsBook {
         if (!salir) {
             printMovil();
             movil = leerLong();
-            if (movil < 1000000000 || movil > 9999999999L) {
+            System.out.println(movil);
+            if (movil < 1000000000L || movil > 9999999999L) {
                 printError();
                 salir = true;
             } else {
@@ -124,8 +125,6 @@ public class ContactsBook {
         if (!salir) {
             printDireccion();
             direccion = leerString();
-            System.out.println(direccion.length());
-            System.out.println(direccion);
             if (direccion.length() < 10 || direccion.length() > 30) {
                 printError();
                 salir = true;

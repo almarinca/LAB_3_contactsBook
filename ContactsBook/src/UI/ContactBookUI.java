@@ -48,7 +48,7 @@ public class ContactBookUI {
         long a;
         String b = in.nextLine();
         try {
-            a = Integer.valueOf(b);
+            a = Long.valueOf(b);
         } catch (Exception e) {
             a = -1;
         }

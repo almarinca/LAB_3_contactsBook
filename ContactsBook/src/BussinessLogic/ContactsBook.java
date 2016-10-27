@@ -153,6 +153,13 @@ public class ContactsBook {
     }   
     
     public static void printContactKeys () {
+        
+        imprimirListaContactos (listaContactos);
+        
+        int opcion = leerInt();
+        
+        printContact(listaContactos.get(opcion - 1));      
+        
 
     }
 

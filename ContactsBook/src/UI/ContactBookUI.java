@@ -112,11 +112,7 @@ public class ContactBookUI {
         System.out.println("\n 0) salir. \n");
     }
     
-    public static void imprimirDetallesContacto(Contact contacto) {
-        
-        System.out.println(contacto.toString());
-        
-    }
+    
 
     public static void PrintError() {
         System.out.println("por favor ingrese una opcion valida");

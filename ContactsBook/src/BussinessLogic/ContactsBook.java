@@ -45,7 +45,7 @@ public class ContactsBook {
 
     public static void printAllContacts() {
         for (Contact contacto : listaContactos) {
-            System.out.println(contacto);
+            printContact(contacto);
         }
 
         

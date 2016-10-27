@@ -48,6 +48,10 @@ public class ContactsBook {
             System.out.println(contacto);
         }
 
+        for (Contact contacto : listaContactos) {
+            System.out.println(contacto);
+        }
+
     }
 
     public static Contact addContact() {

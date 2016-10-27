@@ -13,13 +13,17 @@ public class ContactsBook {
         boolean salir = false;
 
         bienvenida();
-        while (!false) {
+        while (!salir) {
 
             printMenu();
             int menu = leerInt();
             switch (menu) {
                 case 1:
-                    listaContactos.add(addContact());
+                    Contact nuevo = addContact();
+                    if (nuevo != null) {
+                        listaContactos.add(nuevo);
+                        printAgregado();
+                    }
                     break;
             }
         }
@@ -72,13 +76,12 @@ public class ContactsBook {
             printValorCorrecto();
             printCorreo();
             correo.add(leerString());
-            System.out.println(correo.size());
             if (correo.get(0).contains("@") && correo.get(0).contains(".")) {
                 if (correo.get(0).length() < 11 || correo.get(0).length() > 25) {
-                    printValorCorrecto();
-                } else {
                     printError();
                     salir = true;
+                } else {
+                    printValorCorrecto();
                 }
             } else {
                 printError();
@@ -98,8 +101,7 @@ public class ContactsBook {
         if (!salir) {
             printMovil();
             movil = leerLong();
-            long a = 999999999;
-            if (movil < 1000000000 || movil > a) {
+            if (movil < 1000000000 || movil > 9999999999L) {
                 printError();
                 salir = true;
             } else {
@@ -109,6 +111,8 @@ public class ContactsBook {
         if (!salir) {
             printDireccion();
             direccion = leerString();
+            System.out.println(direccion.length());
+            System.out.println(direccion);
             if (direccion.length() < 10 || direccion.length() > 30) {
                 printError();
                 salir = true;

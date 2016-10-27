@@ -2,6 +2,7 @@ package UI;
 
 import BussinessLogic.ContactsBook;
 import Data.Contact;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ContactBookUI {
@@ -101,9 +102,12 @@ public class ContactBookUI {
                 + "6) Salir" + "\n");
     }
 
-    public static void listaContactos() {
+    public static void imprimirListaContactos(ArrayList<Contact> listaContactos) {
         System.out.println("\n Por favor seleccione uno de los contactos para realizar la acción. \n");
-        ContactsBook.printAllContacts();
+        for (Contact contacto : listaContactos) {
+            int i=1;
+            System.out.println(i++ +")" + contacto.getNombre());
+        }
         System.out.println("\n 0) salir. \n");
     }
 

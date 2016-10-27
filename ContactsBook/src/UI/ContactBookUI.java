@@ -25,7 +25,7 @@ public class ContactBookUI {
 
     public static int leerInt() {
         int a;
-        String b = in.next();
+        String b = in.nextLine();
         try {
             a = Integer.valueOf(b);
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class ContactBookUI {
     public static String leerString() {
         String a;
         try {
-            a = in.next();
+            a = in.nextLine();
         } catch (Exception e) {
             a = null;
         }
@@ -46,9 +46,9 @@ public class ContactBookUI {
 
     public static long leerLong() {
         long a;
-        String b = in.next();
+        String b = in.nextLine();
         try {
-            a = Integer.valueOf(b);
+            a = Long.valueOf(b);
         } catch (Exception e) {
             a = -1;
         }

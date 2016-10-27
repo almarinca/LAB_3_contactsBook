@@ -25,17 +25,28 @@ public class ContactsBook {
                         printAgregado();
                     }
                     break;
+                case 2:
+                    break;
+                case 3:
+                    break;
                 case 4:
                     printAllContacts();
+                    break;
+                case 5:
                     break;
                 case 6:
                     salir = true;
                     break;
+                default:
+                    printError();
             }
         }
     }
 
     public static void printAllContacts() {
+        for (Contact contacto : listaContactos) {
+            System.out.println(contacto);
+        }
 
         for (Contact contacto : listaContactos) {
             System.out.println(contacto);
@@ -111,7 +122,7 @@ public class ContactsBook {
         if (!salir) {
             printMovil();
             movil = leerLong();
-            if (movil < 1000000000 || movil > 9999999999L) {
+            if (movil < 1000000000L || movil > 9999999999L) {
                 printError();
                 salir = true;
             } else {
@@ -121,8 +132,6 @@ public class ContactsBook {
         if (!salir) {
             printDireccion();
             direccion = leerString();
-            System.out.println(direccion.length());
-            System.out.println(direccion);
             if (direccion.length() < 10 || direccion.length() > 30) {
                 printError();
                 salir = true;

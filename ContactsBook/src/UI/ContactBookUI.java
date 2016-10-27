@@ -106,9 +106,16 @@ public class ContactBookUI {
         System.out.println("\n Por favor seleccione uno de los contactos para realizar la acción. \n");
         for (Contact contacto : listaContactos) {
             int i=1;
-            System.out.println(i++ +")" + contacto.getNombre());
+            System.out.println(i++ +")" + contacto.getNombre());      
+            
         }
         System.out.println("\n 0) salir. \n");
+    }
+    
+    public static void imprimirDetallesContacto(Contact contacto) {
+        
+        System.out.println(contacto.toString());
+        
     }
 
     public static void PrintError() {

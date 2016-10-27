@@ -22,7 +22,12 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Contact{" + "nombre=" + nombre + ", apellido=" + apellido + ", correoElectronico=" + correoElectronico + ", telefonoFijo=" + telefonoFijo + ", telefonoMovil=" + telefonoMovil + ", direccion=" + direccion + '}';
+        return "nombre:" + nombre + "\n"
+                + "apellido:" + apellido + "\n"
+                + "correoElectronico:" + correoElectronico + "\n"
+                + "telefonoFijo:" + telefonoFijo + "\n"
+                + "telefonoMovil:" + telefonoMovil + "\n"
+                + "direccion:" + direccion + "\n";
     }
     
     

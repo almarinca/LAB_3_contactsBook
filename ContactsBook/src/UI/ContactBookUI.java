@@ -1,10 +1,11 @@
 package UI;
 
+import BussinessLogic.ContactsBook;
 import Data.Contact;
 import java.util.Scanner;
 
 public class ContactBookUI {
-    
+
     static Scanner in = new Scanner(System.in);
 
     public static void printContact(Contact contact) {
@@ -12,7 +13,8 @@ public class ContactBookUI {
     }
 
     public static void bienvenida() {
-
+        System.out.println(
+                "Bienvenido a libreta  de contactos" + "\n" + "");
     }
 
     public static void printMenu() {
@@ -41,7 +43,7 @@ public class ContactBookUI {
         }
         return a;
     }
-    
+
     public static long leerLong() {
         long a;
         String b = in.next();
@@ -52,36 +54,57 @@ public class ContactBookUI {
         }
         return a;
     }
-    
-    public static void printError(){
+
+    public static void printError() {
         System.out.println("Valor no válido, volviendo al menú");
     }
-    
-    public static void printValorCorrecto(){
+
+    public static void printValorCorrecto() {
         System.out.println("Valor ingresado correctamente");
     }
-    
-    public static void printNombre(){
+
+    public static void printNombre() {
         System.out.println("Por favor ingrese el nombre del nuevo contacto(no debe tener más de 10 caracteres)");
     }
-    
-    public static void printApellido(){
+
+    public static void printApellido() {
         System.out.println("Por favor ingrese el apellido del nuevo contacto(no debe tener más de 10 caracteres)");
     }
-    
-    public static void printCorreo(){
+
+    public static void printCorreo() {
         System.out.println("Por favor ingrese el correo electrónico del nuevo contacto(debe tener un '@' y un '.')");
     }
-    
-    public static void printFijo(){
+
+    public static void printFijo() {
         System.out.println("Ingrese el número de teléfono fijo de su nuevo contacto");
     }
-    
-    public static void printMovil(){
+
+    public static void printMovil() {
         System.out.println("Ingrese el número de teléfono móvil de su nuevo contacto");
     }
-    
-    public static void printDireccion(){
+
+    public static void printDireccion() {
         System.out.println("Ingrese la dirección de la residencia del nuevo contacto (no debe tener menos de 10 caracteres o más de 30)");
     }
+
+    public static void menuPrincipal() {
+        System.out.println("\n Por favor seleccione una opción."
+                + "1) Agregar contacto" + "\n"
+                + "2) Eliminar contacto" + "\n"
+                + "3) Actualizar contacto" + "\n"
+                + "4) Mostrar todos los contactos" + "\n"
+                + "5) Mostrar un contacto" + "\n"
+                + "6) Salir" + "\n");
+    }
+
+    public static void listaContactos() {
+        System.out.println("\n Por favor seleccione uno de los contactos para realizar la acción. \n");
+        ContactsBook.printAllContacts();
+        System.out.println("\n 0) salir. \n");
+    }
+
+    public static void PrintError() {
+        System.out.println("por favor ingrese una opcion valida");
+    }
+
 }

@@ -25,6 +25,10 @@ public class ContactsBook {
         }
     }
 
+    public static void printAllContacts() {
+
+    }
+
     public static Contact addContact() {
         boolean salir = false;
         printNombre();

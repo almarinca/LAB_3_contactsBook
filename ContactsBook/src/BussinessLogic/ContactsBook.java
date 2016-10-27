@@ -30,6 +30,7 @@ public class ContactsBook {
                 case 3:
                     break;
                 case 4:
+                    printAllContacts();
                     break;
                 case 5:
                     break;
@@ -43,6 +44,9 @@ public class ContactsBook {
     }
 
     public static void printAllContacts() {
+        for (Contact contacto : listaContactos) {
+            System.out.println(contacto);
+        }
 
     }
 
@@ -114,7 +118,6 @@ public class ContactsBook {
         if (!salir) {
             printMovil();
             movil = leerLong();
-            System.out.println(movil);
             if (movil < 1000000000L || movil > 9999999999L) {
                 printError();
                 salir = true;

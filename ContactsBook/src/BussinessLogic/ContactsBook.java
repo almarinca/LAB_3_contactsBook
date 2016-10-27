@@ -147,7 +147,7 @@ public class ContactsBook {
             listaContactos.remove(contact - 1);
             printBorrado();
         }
-        catch(Exception e){
+        catch(IndexOutOfBoundsException e){
             printError();
         }
     }
@@ -168,7 +168,11 @@ public class ContactsBook {
         
         int opcion = leerInt();
         
+        try {
         printContact(listaContactos.get(opcion - 1));  
+        } catch (IndexOutOfBoundsException e) {
+            printError();
+        }
     }
 
 }

@@ -75,8 +75,6 @@ public class mainWindow extends javax.swing.JFrame {
         botonAgregar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonAgregar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonAgregar.setPreferredSize(new java.awt.Dimension(110, 30));
-        botonAgregar.setRolloverEnabled(true);
-        botonAgregar.setSize(new java.awt.Dimension(110, 30));
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
@@ -87,8 +85,6 @@ public class mainWindow extends javax.swing.JFrame {
         botonEliminar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonEliminar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonEliminar.setPreferredSize(new java.awt.Dimension(110, 30));
-        botonEliminar.setRolloverEnabled(true);
-        botonEliminar.setSize(new java.awt.Dimension(110, 30));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
@@ -99,7 +95,11 @@ public class mainWindow extends javax.swing.JFrame {
         botonActualizar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonActualizar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonActualizar.setPreferredSize(new java.awt.Dimension(110, 30));
-        botonActualizar.setSize(new java.awt.Dimension(110, 30));
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarActionPerformed(evt);
+            }
+        });
 
         botonMostrarUno.setText("Ver Contacto");
         botonMostrarUno.addActionListener(new java.awt.event.ActionListener() {
@@ -160,21 +160,30 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         Agregar dialog = new Agregar(new javax.swing.JFrame(), true);
+        dialog = dialog.modificarAgregar(dialog);
         dialog.setVisible(true);
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        // TODO add your handling code here:
+        try {
+            Contact.listaContactos.remove(lista.getSelectedIndex()); //JOptionPane.showMessageDialog()
+            modelo.removeElementAt(lista.getSelectedIndex());
+            lista.setModel(mainWindow.modelo);
+            mainWindow.lista.setEnabled(true);
+            JOptionPane.showMessageDialog(this, "Contacto eliminado correctamente");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleccione un contacto para eliminarlo");
+        }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonMostrarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarUnoActionPerformed
-        
+
         try {
-        JOptionPane.showMessageDialog(this,Contact.listaContactos.get(lista.getSelectedIndex()).toString()); //JOptionPane.showMessageDialog()
+            JOptionPane.showMessageDialog(this, Contact.listaContactos.get(lista.getSelectedIndex()).toString()); //JOptionPane.showMessageDialog()
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(this, "Seleccione un contacto para verlo");
         }
-            
+
     }//GEN-LAST:event_botonMostrarUnoActionPerformed
 
     private void botonMostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarTodosActionPerformed
@@ -184,6 +193,17 @@ public class mainWindow extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(this, contactos);
     }//GEN-LAST:event_botonMostrarTodosActionPerformed
+
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
+        int index = lista.getSelectedIndex();
+        if (index != -1) {
+            Agregar dialog = new Agregar(new javax.swing.JFrame(), true);
+            dialog = dialog.modificarActualizar(dialog);
+            dialog.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione un contacto");
+        }
+    }//GEN-LAST:event_botonActualizarActionPerformed
 
     /**
      * @param args the command line arguments

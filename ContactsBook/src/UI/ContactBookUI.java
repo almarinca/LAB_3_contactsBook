@@ -63,10 +63,10 @@ public class ContactBookUI {
         System.out.println("Valor ingresado correctamente\n");
     }
 
-    public static void printAgregado(){
+    public static void printAgregado() {
         System.out.println("Contacto agregado correctamente\n");
     }
-    
+
     public static void printNombre() {
         System.out.println("Por favor ingrese el nombre del nuevo contacto(no debe tener más de 10 caracteres)\n");
     }
@@ -93,18 +93,18 @@ public class ContactBookUI {
 
     public static void imprimirListaContactos(ArrayList<Contact> listaContactos) {
         System.out.println("\n Por favor seleccione uno de los contactos para realizar la acción. \n");
-        int i=1;
+        int i = 1;
         for (Contact contacto : listaContactos) {
-            System.out.println(i++ +")" + contacto.getNombre()); 
+            System.out.println(i++ + ")" + contacto.getNombre());
         }
         System.out.println("\n 0) salir. \n");
     }
-    
-    public static void printBorrado(){
+
+    public static void printBorrado() {
         System.out.println("Contacto eliminado correctamente\n");
     }
-    
-    public static void printActualizado(){
+
+    public static void printActualizado() {
         System.out.println("El contacto fue actualizado correctamente\n");
     }
 }

@@ -294,16 +294,15 @@ public class Agregar extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
 
-    public Agregar modificarActualizar(Agregar actualizar) {
-        actualizar.jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizar Contacto"));
-        actualizar.jPanel1.setToolTipText("Actualizar contacto");
-        return actualizar;
+    public void modificarActualizar() {
+        this.jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizar Contacto"));
+        this.jPanel1.setToolTipText("Actualizar contacto");
+
     }
 
-    public Agregar modificarAgregar(Agregar agregar) {
-        agregar.jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar Contacto"));
-        agregar.jPanel1.setToolTipText("Agregar contacto");
-        return agregar;
+    public void modificarAgregar() {
+        this.jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar Contacto"));
+        this.jPanel1.setToolTipText("Agregar contacto");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

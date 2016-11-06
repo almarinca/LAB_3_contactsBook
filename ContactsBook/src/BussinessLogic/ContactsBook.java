@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class ContactsBook {
 
-    
     public static void main(String[] args) {
 
         boolean salir = false;
@@ -62,12 +61,13 @@ public class ContactsBook {
                 printError();
                 salir = true;
                 break;
-            } else if (nombre.length() < 3 || nombre.length() > 10) {
-                printError();
-                salir = true;
-                break;
             }
         }
+        if (nombre.length() < 3 || nombre.length() > 10) {
+            printError();
+            salir = true;
+        }
+
         if (!salir) {
             printValorCorrecto();
             printApellido();
@@ -78,11 +78,11 @@ public class ContactsBook {
                     printError();
                     salir = true;
                     break;
-                } else if (apellido.length() < 3 || apellido.length() > 10) {
-                    printError();
-                    salir = true;
-                    break;
                 }
+            }
+            if (apellido.length() < 3 || apellido.length() > 10) {
+                printError();
+                salir = true;
             }
         }
         if (!salir) {

@@ -183,10 +183,11 @@ public class Agregar extends javax.swing.JDialog {
                 if (nombre.contains(a)) {
                     JOptionPane.showMessageDialog(this, "registrado incorrectamente, el nombre no debe contener numeros");
                     break loop;
-                } else if (nombre.length() < 3 || nombre.length() > 10) {
-                    JOptionPane.showMessageDialog(this, "registrado incorrectamente, nombre no debe tener menos de 3 o más de 10 caracteres");
-                    break loop;
                 }
+            }
+            if (nombre.length() < 3 || nombre.length() > 10) {
+                JOptionPane.showMessageDialog(this, "registrado incorrectamente, nombre no debe tener menos de 3 o más de 10 caracteres");
+                break loop;
             }
 
             for (int i = 0; i < 10; i++) {
@@ -194,10 +195,11 @@ public class Agregar extends javax.swing.JDialog {
                 if (apellido.contains(a)) {
                     JOptionPane.showMessageDialog(this, "registrado incorrectamente, apellido no debe contener numeros");
                     break loop;
-                } else if (apellido.length() < 3 || apellido.length() > 10) {
-                    JOptionPane.showMessageDialog(this, "registrado incorrectamente, apellido no debe tener menos de 3 o más de 10 caracteres");
-                    break loop;
                 }
+            }
+            if (apellido.length() < 3 || apellido.length() > 10) {
+                JOptionPane.showMessageDialog(this, "registrado incorrectamente, apellido no debe tener menos de 3 o más de 10 caracteres");
+                break loop;
             }
 
             try {

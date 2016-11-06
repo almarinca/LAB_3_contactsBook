@@ -10,6 +10,7 @@ public class Contact {
     private int telefonoFijo;
     private long telefonoMovil;
     private String direccion;
+    public static ArrayList<Contact> listaContactos = new ArrayList<>();
 
     public Contact(String nombre, String apellido, ArrayList<String> correoElectronico, int telefonoFijo, long telefonoMovil, String direccion) {
         this.nombre = nombre;
@@ -22,12 +23,12 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "nombre:" + nombre + "\n"
-                + "apellido:" + apellido + "\n"
-                + "correoElectronico:" + correoElectronico + "\n"
-                + "telefonoFijo:" + telefonoFijo + "\n"
-                + "telefonoMovil:" + telefonoMovil + "\n"
-                + "direccion:" + direccion + "\n";
+        return "nombre: " + nombre + "\n"
+                + "apellido: " + apellido + "\n"
+                + "correoElectronico: " + correoElectronico + "\n"
+                + "telefonoFijo: " + telefonoFijo + "\n"
+                + "telefonoMovil: " + telefonoMovil + "\n"
+                + "direccion: " + direccion + "\n";
     }
     
     public String getNombre() {

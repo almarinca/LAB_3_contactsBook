@@ -6,8 +6,7 @@ import java.util.ArrayList;
 
 public class ContactsBook {
 
-    static ArrayList<Contact> listaContactos = new ArrayList<>();
-
+    
     public static void main(String[] args) {
 
         boolean salir = false;
@@ -21,7 +20,7 @@ public class ContactsBook {
                 case 1:
                     Contact nuevo = addContact();
                     if (nuevo != null) {
-                        listaContactos.add(nuevo);
+                        Contact.listaContactos.add(nuevo);
                         printAgregado();
                         printContact(nuevo);
                     }
@@ -141,10 +140,10 @@ public class ContactsBook {
     }
 
     public static void removeContact() {
-        imprimirListaContactos(listaContactos);
+        imprimirListaContactos(Contact.listaContactos);
         int contact = leerInt();
         try {
-            listaContactos.remove(contact - 1);
+            Contact.listaContactos.remove(contact - 1);
             printBorrado();
         } catch (IndexOutOfBoundsException e) {
             printError();
@@ -152,12 +151,12 @@ public class ContactsBook {
     }
 
     public static void updateContact() {
-        imprimirListaContactos(listaContactos);
+        imprimirListaContactos(Contact.listaContactos);
         int contact = leerInt();
-        if (contact > 0 && contact <= listaContactos.size()) {
+        if (contact > 0 && contact <= Contact.listaContactos.size()) {
             Contact cont = addContact();
             if (cont != null) {
-                listaContactos.set(contact - 1, cont);
+                Contact.listaContactos.set(contact - 1, cont);
                 printActualizado();
             }
         } else if (contact == 0) {
@@ -168,19 +167,19 @@ public class ContactsBook {
     }
 
     public static void printAllContacts() {
-        for (Contact contacto : listaContactos) {
+        for (Contact contacto : Contact.listaContactos) {
             printContact(contacto);
         }
     }
 
     public static void printContactKeys() {
 
-        imprimirListaContactos(listaContactos);
+        imprimirListaContactos(Contact.listaContactos);
 
         int opcion = leerInt();
 
         try {
-            printContact(listaContactos.get(opcion - 1));
+            printContact(Contact.listaContactos.get(opcion - 1));
         } catch (IndexOutOfBoundsException e) {
             if (opcion != 0) {
                 printError();

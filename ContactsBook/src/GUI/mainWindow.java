@@ -75,6 +75,8 @@ public class mainWindow extends javax.swing.JFrame {
         botonAgregar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonAgregar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonAgregar.setPreferredSize(new java.awt.Dimension(110, 30));
+        botonAgregar.setRolloverEnabled(true);
+        botonAgregar.setSize(new java.awt.Dimension(110, 30));
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
@@ -85,6 +87,8 @@ public class mainWindow extends javax.swing.JFrame {
         botonEliminar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonEliminar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonEliminar.setPreferredSize(new java.awt.Dimension(110, 30));
+        botonEliminar.setRolloverEnabled(true);
+        botonEliminar.setSize(new java.awt.Dimension(110, 30));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
@@ -95,6 +99,7 @@ public class mainWindow extends javax.swing.JFrame {
         botonActualizar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonActualizar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonActualizar.setPreferredSize(new java.awt.Dimension(110, 30));
+        botonActualizar.setSize(new java.awt.Dimension(110, 30));
         botonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonActualizarActionPerformed(evt);
@@ -160,7 +165,7 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         Agregar dialog = new Agregar(new javax.swing.JFrame(), true);
-        dialog = dialog.modificarAgregar(dialog);
+        dialog.modificarAgregar();
         dialog.setVisible(true);
     }//GEN-LAST:event_botonAgregarActionPerformed
 
@@ -198,7 +203,7 @@ public class mainWindow extends javax.swing.JFrame {
         int index = lista.getSelectedIndex();
         if (index != -1) {
             Agregar dialog = new Agregar(new javax.swing.JFrame(), true);
-            dialog = dialog.modificarActualizar(dialog);
+            dialog.modificarActualizar();
             dialog.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Por favor seleccione un contacto");

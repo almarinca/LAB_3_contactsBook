@@ -117,7 +117,7 @@ public class Agregar extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(campoCorreo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Cancelar.setText("Cancelar");
@@ -228,7 +228,6 @@ public class Agregar extends javax.swing.JDialog {
                 break;
             }
 
-            
             if (correo1.contains("@") && correo1.contains(".")) {
                 if (correo1.length() < 11 || correo1.length() > 25) {
                     JOptionPane.showMessageDialog(this, "registrado incorrectamente, correo no debe tener menos de 11 o más de 25 caracteres");
@@ -238,44 +237,53 @@ public class Agregar extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "registrado incorrectamente, correo debe contener al menos un @ y un punto");
                 break;
             }
-            
-            
-            
-            /*if (correo2.contains("@") && correo2.contains(".")) {
+
+            if (correo2.contains("@") && correo2.contains(".")) {
                 if (correo2.length() < 11 || correo2.length() > 25) {
                     JOptionPane.showMessageDialog(this, "registrado incorrectamente, correo no debe tener menos de 11 o más de 25 caracteres");
                     break;
                 }
+            } else if (correo2.isEmpty()) {
+
             } else {
                 JOptionPane.showMessageDialog(this, "registrado incorrectamente, correo debe contener al menos un @ y un punto");
                 break;
             }
-            
-            
-            
+
             if (correo3.contains("@") && correo3.contains(".")) {
                 if (correo3.length() < 11 || correo3.length() > 25) {
                     JOptionPane.showMessageDialog(this, "registrado incorrectamente, correo no debe tener menos de 11 o más de 25 caracteres");
                     break;
                 }
+            } else if (correo3.isEmpty()) {
+
             } else {
                 JOptionPane.showMessageDialog(this, "registrado incorrectamente, correo debe contener al menos un @ y un punto");
                 break;
-            }*/
-            
+            }
 
             ArrayList<String> correo = new ArrayList<>();
             correo.add(correo1);
-            //correo.add(correo2);
-            //correo.add(correo3);
-
+            if (!correo2.isEmpty()) {
+                correo.add(correo2);
+            }
+            if (!correo3.isEmpty()) {
+                correo.add(correo3);
+            }
             Contact nuevoContacto = new Contact(nombre, apellido, correo, fijo, movil, direccion);
-            Contact.listaContactos.add(nuevoContacto);
-            mainWindow.modelo.addElement(nuevoContacto.getNombre() + " " + nuevoContacto.getApellido());
+            if ("Agregar contacto".equals(jPanel1.getToolTipText())) {
+                Contact.listaContactos.add(nuevoContacto);
+                mainWindow.modelo.addElement(nuevoContacto.getNombre() + " " + nuevoContacto.getApellido());
+                JOptionPane.showMessageDialog(this, "registrado correctamente");
+            } else if ("Actualizar contacto".equals(jPanel1.getToolTipText())) {
+                Contact.listaContactos.set(mainWindow.lista.getSelectedIndex(), nuevoContacto);
+                mainWindow.modelo.set(mainWindow.lista.getSelectedIndex(), nuevoContacto.getNombre() + " " + nuevoContacto.getApellido());
+                JOptionPane.showMessageDialog(this, "Contacto actualizado correctamente");
+            }
+
             mainWindow.lista.setModel(mainWindow.modelo);
             mainWindow.lista.setEnabled(true);
             this.setVisible(false);
-            JOptionPane.showMessageDialog(this, "registrado correctamente");
             break;
         }
 
@@ -286,6 +294,17 @@ public class Agregar extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
 
+    public Agregar modificarActualizar(Agregar actualizar) {
+        actualizar.jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizar Contacto"));
+        actualizar.jPanel1.setToolTipText("Actualizar contacto");
+        return actualizar;
+    }
+
+    public Agregar modificarAgregar(Agregar agregar) {
+        agregar.jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar Contacto"));
+        agregar.jPanel1.setToolTipText("Agregar contacto");
+        return agregar;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;

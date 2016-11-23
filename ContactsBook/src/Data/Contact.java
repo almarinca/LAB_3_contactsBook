@@ -1,9 +1,16 @@
 package Data;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Contact {
-    
+public class Contact implements Serializable {
+
     private String nombre;
     private String apellido;
     private ArrayList<String> correoElectronico;
@@ -30,7 +37,7 @@ public class Contact {
                 + "telefonoMovil: " + telefonoMovil + "\n"
                 + "direccion: " + direccion + "\n";
     }
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -79,6 +86,55 @@ public class Contact {
         this.direccion = direccion;
     }
     
-    
-    
+    public static void exportar(){
+        
+    }
+
+    public static void guardarContactos() {
+        FileOutputStream archivo = null;
+        ObjectOutputStream salida = null;
+        try {
+            archivo = new FileOutputStream("contacts.db");
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
+        try {
+            salida = new ObjectOutputStream(archivo);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        try {
+            salida.writeObject(listaContactos);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        try {
+            salida.close();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public static void cargarContactos() {
+        FileInputStream archivo = null;
+        ObjectInputStream entrada = null;
+        try {
+            archivo = new FileInputStream("contacts.db");
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
+        try {
+            entrada = new ObjectInputStream(archivo);
+        } catch (IOException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+        try {
+            listaContactos = (ArrayList<Contact>) entrada.readObject();
+            entrada.close();
+            archivo.close();
+        } catch (IOException | NullPointerException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        
+    }
 }

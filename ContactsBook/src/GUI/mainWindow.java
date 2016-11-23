@@ -6,7 +6,13 @@
 package GUI;
 
 import Data.Contact;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,26 +41,26 @@ public class mainWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
-        lista = new javax.swing.JList<>();
+        lista = new javax.swing.JList<String>();
         botonAgregar = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
         botonActualizar = new javax.swing.JButton();
         botonMostrarUno = new javax.swing.JButton();
         botonMostrarTodos = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 300));
         setMaximumSize(new java.awt.Dimension(354, 500));
         setMinimumSize(new java.awt.Dimension(354, 500));
-        setPreferredSize(new java.awt.Dimension(354, 500));
-        setSize(new java.awt.Dimension(354, 500));
+        setPreferredSize(new java.awt.Dimension(354, 550));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Contactos"));
 
-        lista.setModel(new javax.swing.AbstractListModel<String>() {
+        lista.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "No hay contactos" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         lista.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lista.setEnabled(false);
@@ -75,8 +81,6 @@ public class mainWindow extends javax.swing.JFrame {
         botonAgregar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonAgregar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonAgregar.setPreferredSize(new java.awt.Dimension(110, 30));
-        botonAgregar.setRolloverEnabled(true);
-        botonAgregar.setSize(new java.awt.Dimension(110, 30));
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
@@ -87,8 +91,6 @@ public class mainWindow extends javax.swing.JFrame {
         botonEliminar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonEliminar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonEliminar.setPreferredSize(new java.awt.Dimension(110, 30));
-        botonEliminar.setRolloverEnabled(true);
-        botonEliminar.setSize(new java.awt.Dimension(110, 30));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
@@ -99,7 +101,6 @@ public class mainWindow extends javax.swing.JFrame {
         botonActualizar.setMaximumSize(new java.awt.Dimension(110, 30));
         botonActualizar.setMinimumSize(new java.awt.Dimension(110, 30));
         botonActualizar.setPreferredSize(new java.awt.Dimension(110, 30));
-        botonActualizar.setSize(new java.awt.Dimension(110, 30));
         botonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonActualizarActionPerformed(evt);
@@ -120,6 +121,20 @@ public class mainWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Guardar y Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Exportar Contactos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,11 +151,15 @@ public class mainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonMostrarUno)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botonMostrarUno)
+                                    .addComponent(jButton1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonMostrarTodos))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(botonMostrarTodos))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,7 +176,11 @@ public class mainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonMostrarUno)
                     .addComponent(botonMostrarTodos))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         pack();
@@ -210,6 +233,29 @@ public class mainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonActualizarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Contact.guardarContactos();
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        FileWriter writer = null;
+        try {
+            JFileChooser escoger = new JFileChooser();
+            escoger.showSaveDialog(this);
+            File ruta = escoger.getSelectedFile();
+            writer = new FileWriter(ruta + ".csv");
+            for (Contact contacto : Contact.listaContactos) {
+                writer.write(contacto.toString());
+            }
+            writer.close();
+            JOptionPane.showMessageDialog(this, "Exportado correctamente");
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,7 +287,14 @@ public class mainWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainWindow().setVisible(true);
+                mainWindow menu = new mainWindow();
+                Contact.cargarContactos();
+                for (Contact contacto : Contact.listaContactos) {
+                    menu.modelo.addElement(contacto.getNombre() + " " + contacto.getApellido());
+                    menu.lista.setModel(mainWindow.modelo);
+                    menu.lista.setEnabled(true);
+                }
+                menu.setVisible(true);
             }
         });
     }
@@ -252,6 +305,8 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonMostrarTodos;
     private javax.swing.JButton botonMostrarUno;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JList<String> lista;
     private javax.swing.JScrollPane scroll;
